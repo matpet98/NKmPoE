@@ -1,15 +1,15 @@
-{   "Temparatur": 600,
+{   "Temperatur": 600,
     "Wartungszeit": "16:30",
     "Machinennummer": 5,
     "Defekt": "Reihe 1 Machinenummer 4",
     "Oelwechsel":"20:00",
     "Energieverbrauch":"A++",
     "Reparatur":"Montag",
-    "Mechankername":"Nicol",
-    "Hallenummer":20,
+    "Mechanikername":"Nicol",
+    "Hallennummer":20,
     "Wasserverbrauch":15,
     "Abfallreduzierung":"20%",
     "Vorrat":20,
     "Rest":200
- 
+
 }

@@ -1,28 +1,28 @@
 import json,os
 from flask import Flask,json
-from flask_restful import Api, Resource
+from flask_cors import CORS
 
 app = Flask(__name__)
-api =  Api(app)
+CORS(app)
 
 
-# open file Json
-with open('names.json', 'r') as myfile:
-    data=myfile.read()
 
-# parse file 
-obj = json.loads(data)
-
-
-class gettheobject(Resource):
-  def get(self, name):
-  
-    return obj[name]
-
- 
+@app.route('/temperatur',methods=['GET'])
+def get_temperature():
+    # open file Json
+    with open('names.json', 'r') as myfile:
+        data=myfile.read()
+        obj = json.loads(data)
+        print(obj)
+    return str(obj["Temperatur"])
 
 
-api.add_resource(gettheobject,"/op/<string:name>/")
+
+
+
+
+
+
 
 if __name__ == "__main__":
-    app.run(debug=False) 
+    app.run(debug=True)
