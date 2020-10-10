@@ -19,6 +19,7 @@ async function train_model() {
   nlp.settings.autoSave = false;
   nlp.addLanguage("de");
   // Adds the utterances and intents for the NLP
+  // intent Temperatur
   nlp.addDocument("de", "Wie ist die Temperatur", "temperatur");
   nlp.addDocument("de", "Was ist die Temperatur", "temperatur");
   nlp.addDocument("de", "Wieviel Grad ist es", "temperatur");
@@ -26,13 +27,38 @@ async function train_model() {
   nlp.addDocument("de", "Temperatur bitte", "temperatur");
   nlp.addDocument("de", "Wieviel Grad beträgt die Temperatur", "temperatur");
 
+  // intent Wartungszeit
+  nlp.addDocument("de", "Um wie viel Uhr ist die Wartung", "wartungszeit");
+  nlp.addDocument("de", "Wann ist die Wartung", "wartungszeit");
+  nlp.addDocument("de", "Wann ist die Wartungszeit", "wartungszeit");
+  nlp.addDocument("de", "Wann wird die Wartung durchgeführt", "wartungszeit");
+  nlp.addDocument("de", "Wartungszeit bitte", "wartungszeit");
+  nlp.addDocument("de", "Wann ist die Wartung vorgesehen", "wartungszeit");
+
+  // intent Machinennummer
+  nlp.addDocument("de", "Wie ist die Machinennummer", "machinennummer");
+  nlp.addDocument("de", "Welche Machinennummer hat diese Machine", "machinennummer");
+  nlp.addDocument("de", "Machinennummer bitte", "machinennummer");
+  nlp.addDocument("de", "Welche Nummer hat diese Machine", "machinennummer");
+  nlp.addDocument("de", "Was ist die Machinennummer", "machinennummer");
+
   // Train also the NLG
   // nlp.addAction("greetings.hello", "getWeather", "", weatherinfo);
   //nlp.addAction("temperatur", "get_request", "", send_request);
   nlp.addAnswer(
     "de",
     "temperatur",
-    "Die Temperatur der Maschine in Grad beträgt:"
+    "Die Temperatur der Maschine in Grad beträgt: "
+  );
+  nlp.addAnswer(
+      "de",
+      "wartungszeit",
+      "Die Wartung ist um "
+  );
+  nlp.addAnswer(
+      "de",
+      "machinennummer",
+      "Die Machinennummer ist: "
   );
 
   await nlp.train();
@@ -88,13 +114,14 @@ export function Chat() {
     console.log(intent[0]);
     console.log(intent[1]);
     //BASE URL+intent matches the API Route at the webserver
-    var api_route = url.concat(String(intent));
+    const api_route = url.concat(String(intent[0]));
     //send request and build up message
-    /* fetch(url)
-      .then((response) => buildMessage(response))
-      .catch((error) => console.error(error)); */
+    fetch(api_route)
+        .then((response) => response.text())
+        .then((res) =>  buildMessage(res, intent[1]))
+        .catch((error) => console.error(error));
     //Hard code request for now
-    buildMessage("600", intent[1]);
+    //buildMessage("600", intent[1]);
   }
 
   function buildMessage(data, answer) {
