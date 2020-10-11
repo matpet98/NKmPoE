@@ -37,7 +37,11 @@ async function train_model() {
 
   // intent Machinennummer
   nlp.addDocument("de", "Wie ist die Machinennummer", "machinennummer");
-  nlp.addDocument("de", "Welche Machinennummer hat diese Machine", "machinennummer");
+  nlp.addDocument(
+    "de",
+    "Welche Machinennummer hat diese Machine",
+    "machinennummer"
+  );
   nlp.addDocument("de", "Machinennummer bitte", "machinennummer");
   nlp.addDocument("de", "Welche Nummer hat diese Machine", "machinennummer");
   nlp.addDocument("de", "Was ist die Machinennummer", "machinennummer");
@@ -50,16 +54,8 @@ async function train_model() {
     "temperatur",
     "Die Temperatur der Maschine in Grad beträgt: "
   );
-  nlp.addAnswer(
-      "de",
-      "wartungszeit",
-      "Die Wartung ist um "
-  );
-  nlp.addAnswer(
-      "de",
-      "machinennummer",
-      "Die Machinennummer ist: "
-  );
+  nlp.addAnswer("de", "wartungszeit", "Die Wartung ist um ");
+  nlp.addAnswer("de", "machinennummer", "Die Machinennummer ist: ");
 
   await nlp.train();
   nlp_model = nlp;
@@ -112,14 +108,17 @@ export function Chat() {
     //process string with model to get intent
     var intent = await get_intent(string_message);
     console.log(intent[0]);
+    if (intent[0] == "None") {
+      return buildMessage(null, null);
+    }
     console.log(intent[1]);
     //BASE URL+intent matches the API Route at the webserver
     const api_route = url.concat(String(intent[0]));
     //send request and build up message
     fetch(api_route)
-        .then((response) => response.text())
-        .then((res) =>  buildMessage(res, intent[1]))
-        .catch((error) => console.error(error));
+      .then((response) => response.text())
+      .then((res) => buildMessage(res, intent[1]))
+      .catch((error) => console.error(error));
     //Hard code request for now
     //buildMessage("600", intent[1]);
   }
@@ -136,7 +135,11 @@ export function Chat() {
         avatar: "https://placeimg.com/140/140/any",
       },
     };
-    msg.text = answer + data;
+    if ((data || answer) == null) {
+      msg.text = "Sorry ich habe dich leider nicht verstanden";
+    } else {
+      msg.text = answer + data;
+    }
     //Schreib Nachricht des Bots in den Chat
     setMessages((previousMessages) => GiftedChat.append(previousMessages, msg));
   }

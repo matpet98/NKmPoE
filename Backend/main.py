@@ -13,7 +13,7 @@ def get_temperature():
     with open('names.json', 'r') as myfile:
         data=myfile.read()
         obj = json.loads(data)
-        print(obj)
+        print(obj["Temperatur"])
     return str(obj["Temperatur"])
 
 @app.route('/wartungszeit',methods=['GET'])
@@ -22,7 +22,7 @@ def get_wartungszeit():
     with open('names.json', 'r') as myfile:
         data=myfile.read()
         obj = json.loads(data)
-        print(obj)
+        print(obj["Wartungszeit"])
     return str(obj["Wartungszeit"])
 
 @app.route('/machinennummer',methods=['GET'])
@@ -31,7 +31,7 @@ def get_machinennummer():
     with open('names.json', 'r') as myfile:
         data=myfile.read()
         obj = json.loads(data)
-        print(obj)
+        print(obj["Machinennummer"])
     return str(obj["Machinennummer"])
 
 
