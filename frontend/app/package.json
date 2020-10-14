@@ -15,6 +15,8 @@
     "@react-navigation/bottom-tabs": "^5.9.2",
     "@react-navigation/native": "^5.7.6",
     "expo": "^39.0.3",
+    "expo-av": "^8.6.0",
+    "expo-cli": "^3.27.14",
     "expo-status-bar": "~1.0.2",
     "node-nlp": "^4.13.3",
     "node-nlp-rn": "^3.5.2",
