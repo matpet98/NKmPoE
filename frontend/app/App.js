@@ -25,29 +25,30 @@ async function train_model() {
   // intent Temperatur
   nlp.addDocument("de", "Wie ist die Temperatur", "temperatur");
   nlp.addDocument("de", "Was ist die Temperatur", "temperatur");
+  nlp.addDocument("de", "Temperatur", "temperatur");
   nlp.addDocument("de", "Wieviel Grad ist es", "temperatur");
   nlp.addDocument("de", "Was ist der Wert der Temperatur", "temperatur");
   nlp.addDocument("de", "Temperatur bitte", "temperatur");
   nlp.addDocument("de", "Wieviel Grad beträgt die Temperatur", "temperatur");
 
-  // intent Wartungszeit
-  nlp.addDocument("de", "Um wie viel Uhr ist die Wartung", "wartungszeit");
-  nlp.addDocument("de", "Wann ist die Wartung", "wartungszeit");
-  nlp.addDocument("de", "Wann ist die Wartungszeit", "wartungszeit");
-  nlp.addDocument("de", "Wann wird die Wartung durchgeführt", "wartungszeit");
-  nlp.addDocument("de", "Wartungszeit bitte", "wartungszeit");
-  nlp.addDocument("de", "Wann ist die Wartung vorgesehen", "wartungszeit");
+  // intent kohlenstoffmonoxid
+  nlp.addDocument("de", "Was ist der Kohlenstoffmonoxidgehalt?", "kohlenstoffmonoxid");
 
-  // intent Machinennummer
-  nlp.addDocument("de", "Wie ist die Machinennummer", "machinennummer");
-  nlp.addDocument(
-    "de",
-    "Welche Machinennummer hat diese Machine",
-    "machinennummer"
-  );
-  nlp.addDocument("de", "Machinennummer bitte", "machinennummer");
-  nlp.addDocument("de", "Welche Nummer hat diese Machine", "machinennummer");
-  nlp.addDocument("de", "Was ist die Machinennummer", "machinennummer");
+
+  // intent Luftfeuchtigkeit
+  nlp.addDocument("de", "Wie hoch ist die Luftfeuchtigkeit?", "luftfeuchtigkeit");
+
+  // intent Luftfeuchtigkeit
+  nlp.addDocument("de", "Funktioniert das Licht?", "licht");
+
+  //intent Flüssiggas
+  nlp.addDocument("de", "Was ist der Flüssiggasgehalt?", "fluessiggas");
+
+  //intent bewegung
+  nlp.addDocument("de", "Funktioniert der Bewegungssensor?", "bewegung");
+
+  //intent rauch
+  nlp.addDocument("de", "Wie groß ist die Rauchentwicklung?", "rauch");
 
   // Train also the NLG
   // nlp.addAction("greetings.hello", "getWeather", "", weatherinfo);
@@ -57,8 +58,12 @@ async function train_model() {
     "temperatur",
     "Die Temperatur der Maschine in Grad beträgt: "
   );
-  nlp.addAnswer("de", "wartungszeit", "Die Wartung ist um ");
-  nlp.addAnswer("de", "machinennummer", "Die Machinennummer ist: ");
+  nlp.addAnswer("de", "kohlenstoffmonoxid", "Der voraussichtliche Kohlenstoffmonoxidgehalt beträgt(absolut): ");
+  nlp.addAnswer("de", "luftfeuchtigkeit", "Die Luftfeuchtigkeit in Prozent beträgt: ");
+  nlp.addAnswer("de", "licht", "Das Licht ist: ");
+  nlp.addAnswer("de", "fluessiggas", "Der voraussichtliche Flüssiggasgehalt beträgt(absolut): ");
+  nlp.addAnswer("de", "bewegung", "Der Bewegungssensor ist: ");
+  nlp.addAnswer("de", "rauch", "Die voraussichtliche Rauchentwicklung beträgt(absolut): ");
 
   await nlp.train();
   nlp_model = nlp;
