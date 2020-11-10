@@ -7,7 +7,7 @@ Prerequisites:
 ### Installation
 1. Clone the github repo.
 2. Install expo and all requiered packages (npm start)
-3. Activate virtuelenv and start Backend
+3. Activate virtualenv and start Backend
 4. On MAC/LINUX:
 ```sh
 $ source env/bin/activate
