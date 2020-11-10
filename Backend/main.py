@@ -5,6 +5,7 @@ from flask import request
 from flask import jsonify, make_response
 from recog import process_audio
 import csv
+import socket
 
 
 app = Flask(__name__)
@@ -32,6 +33,13 @@ def get_calc_data(number):
     for row in dataset:
         result+=float(row[number])
     return result/len(dataset)
+
+
+@app.route('/ip',methods=['GET'])
+def get_ip():
+    hostname = socket.gethostname()
+    local_ip = socket.gethostbyname(hostname)
+    return local_ip
 
 
 #7
@@ -95,4 +103,4 @@ def get_transcipt_audio():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True,host='0.0.0.0')

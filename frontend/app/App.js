@@ -10,7 +10,11 @@ const { containerBootstrap } = require("@nlpjs/core");
 const { Nlp } = require("@nlpjs/nlp");
 const { LangEn, LangDe } = require("@nlpjs/lang-de");
 
+
+//CHANGE TO LOCAL IP HERE  (FOR TESTING ON DEVICES IN SAME NETWORK)
 const url = "http://127.0.0.1:5000/";
+
+
 var nlp_model = null;
 console.log(nlp_model == null);
 //NLP Js function to train model
@@ -31,24 +35,50 @@ async function train_model() {
   nlp.addDocument("de", "Temperatur bitte", "temperatur");
   nlp.addDocument("de", "Wieviel Grad beträgt die Temperatur", "temperatur");
 
-  // intent kohlenstoffmonoxid
-  nlp.addDocument("de", "Was ist der Kohlenstoffmonoxidgehalt?", "kohlenstoffmonoxid");
+ // intent kohlenstoffmonoxid
+ nlp.addDocument("de", "Was ist der Kohlenstoffmonoxidgehalt?", "kohlenstoffmonoxid");
+ nlp.addDocument("de", "Wie hoch ist der Kohlenstoffmonoxidgehalt?", "kohlenstoffmonoxid");
+ nlp.addDocument("de", "Gebe mir bitte den Kohlenstoffmonoxidgehalt an. ", "kohlenstoffmonoxid");
+ nlp.addDocument("de", "Kohlenstoffmonoxidgehalt bitte", "kohlenstoffmonoxid");
+ nlp.addDocument("de", "Wie ist der Kohlenmonoxidgehalt", "kohlenstoffmonoxid");
+ nlp.addDocument("de", "Kohlenmonoxidgehalt", "kohlenstoffmonoxid");
 
 
-  // intent Luftfeuchtigkeit
-  nlp.addDocument("de", "Wie hoch ist die Luftfeuchtigkeit?", "luftfeuchtigkeit");
+ // intent Luftfeuchtigkeit
+ nlp.addDocument("de", "Wie hoch ist die Luftfeuchtigkeit?", "luftfeuchtigkeit");
+ nlp.addDocument("de", "Was ist die Luftfeuchtigkeit", "luftfeuchtigkeit");
+ nlp.addDocument("de", "Welchen Betrag hat die Luftfeuchtigkeit", "luftfeuchtigkeit");
+ nlp.addDocument("de", "Luftfeuchtigkeit bitte", "luftfeuchtigkeit");
+ nlp.addDocument("de", "Luftfeuchtigkeit", "luftfeuchtigkeit");
 
-  // intent Luftfeuchtigkeit
-  nlp.addDocument("de", "Funktioniert das Licht?", "licht");
+ // intent Licht
+ nlp.addDocument("de", "Funktioniert das Licht?", "licht");
+ nlp.addDocument("de", "Ist das Licht an", "licht");
+ nlp.addDocument("de", "Ist das Licht aus", "licht");
+ nlp.addDocument("de", "Wie ist der Status vom Licht", "licht");
+ nlp.addDocument("de", "Licht", "licht");
 
-  //intent Flüssiggas
-  nlp.addDocument("de", "Was ist der Flüssiggasgehalt?", "fluessiggas");
+ //intent Flüssiggas
+ nlp.addDocument("de", "Was ist der Flüssiggasgehalt?", "fluessiggas");
+ nlp.addDocument("de", "Wie hoch ist der Flüssiggasgehalt", "fluessiggas");
+ nlp.addDocument("de", "Flüssiggasgehalt", "fluessiggas");
+ nlp.addDocument("de", "Flüssiggasgehalt bitte", "fluessiggas");
+ nlp.addDocument("de", "Gebe mir bitte denFlüssiggasgehalt bitte", "fluessiggas");
+ nlp.addDocument("de", "Welchen Wert hat das Flüssiggas", "fluessiggas");
+ nlp.addDocument("de", "Flüssiggas", "fluessiggas");
 
-  //intent bewegung
-  nlp.addDocument("de", "Funktioniert der Bewegungssensor?", "bewegung");
+ //intent bewegung
+ nlp.addDocument("de", "Funktioniert der Bewegungssensor?", "bewegung");
+ nlp.addDocument("de", "Ist der Bewegungssensor an", "bewegung");
+ nlp.addDocument("de", "Ist der Bewegungssensor aus", "bewegung");
+ nlp.addDocument("de", "Wie ist der Status des Bewegungssensors", "bewegung");
 
-  //intent rauch
-  nlp.addDocument("de", "Wie groß ist die Rauchentwicklung?", "rauch");
+ //intent rauch
+ nlp.addDocument("de", "Wie groß ist die Rauchentwicklung?", "rauch");
+ nlp.addDocument("de", "Welche Rauchentwicklung wird erwartet?", "rauch");
+ nlp.addDocument("de", "Wie ist die Rauchentwicklung?", "rauch");
+ nlp.addDocument("de", "Rauchentwicklung", "rauch");
+ nlp.addDocument("de", "Rauchentwicklung bitte", "rauch");
 
   // Train also the NLG
   // nlp.addAction("greetings.hello", "getWeather", "", weatherinfo);
