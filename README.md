@@ -8,10 +8,14 @@ Prerequisites:
 ### Installation
 1. Clone the github repo.
 2. Install expo and all requiered packages (npm start)
-3. Activate virtualenv and start Backend
-4. On MAC/LINUX:
+3. Install requirements.txt
 ```sh
-$ source env/bin/activate
+$ pip install -r requirements.txt
+```
+4. Now you have to copy the De-de folder with the german language-model to your pocketsphinx-data path:
+If you have created a virtual env the path is: /YOUR_ENV/lib/python2.7/site-packages/speech_recognition/pocketsphinx-data/
+5. Next you can start the Backend-server:
+```sh
 $ python main.py
 ```
 
