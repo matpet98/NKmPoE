@@ -39,3 +39,8 @@ Your phone and the Computer running the Backend must be in the same network!
 1. Find out the local ip adress of your computer yourself  or go on "http://127.0.0.1:5000/ip"
 2. Change const url = "http://YOUR_IP_ADRESS:5000/" in App.js
 
+### Resources
+```sh
+https://www.kaggle.com/garystafford/environmental-sensor-data-132k
+```
+
