@@ -8,7 +8,7 @@ Prerequisites:
 ### Installation
 1. Clone the github repo.
 2. Install expo and all requiered packages (npm start)
-3. Install requirements.txt
+3. Install requirements.txt (cd in Backend)
 ```sh
 $ pip install -r requirements.txt
 ```
