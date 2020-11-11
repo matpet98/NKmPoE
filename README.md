@@ -3,6 +3,7 @@
 Prerequisites: 
 -Xcode (for Simulator)
 -Expo
+-Python
 
 ### Installation
 1. Clone the github repo.
